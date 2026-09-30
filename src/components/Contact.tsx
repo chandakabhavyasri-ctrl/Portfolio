@@ -53,18 +53,20 @@ export const Contact: React.FC = () => {
     setErrorMessage("");
 
     try {
-      // Send to server-side Next.js route
-      const response = await fetch("/api/contact", {
+      // Direct browser-to-Web3Forms submission (bypasses server Cloudflare bot-challenges)
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Accept: "application/json",
         },
         body: JSON.stringify({
+          access_key: "cf5d41f8-e639-4bcf-a041-e0df4c5f385d",
           name: formData.name,
           email: formData.email,
-          subject: formData.subject,
+          subject: formData.subject || `New Portfolio Message from ${formData.name}`,
           message: formData.message,
-          _honey: formData._honey,
+          from_name: `${formData.name} (Portfolio Inquiry)`,
         }),
       });
 
@@ -74,12 +76,14 @@ export const Contact: React.FC = () => {
         setSubmitStatus("success");
       } else {
         setSubmitStatus("error");
-        setErrorMessage(data.error || "Failed to send message. Please try again or email directly.");
+        setErrorMessage(
+          data.message || "Unable to send message. You can email directly below."
+        );
       }
     } catch (err) {
-      console.error("Submission failed:", err);
+      console.error("Submission error:", err);
       setSubmitStatus("error");
-      setErrorMessage("Network error occurred. You can click below to email directly.");
+      setErrorMessage("Network issue occurred. You can click below to email directly.");
     } finally {
       setIsSubmitting(false);
     }
@@ -208,7 +212,7 @@ export const Contact: React.FC = () => {
                   className="flex items-center justify-center gap-2 p-3 rounded-lg bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 text-slate-700 hover:text-blue-700 font-semibold text-xs transition-colors"
                 >
                   <svg className="w-4 h-4 fill-current text-blue-600" viewBox="0 0 24 24">
-                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.78a1.64 1.64 0 0 0-1.64 1.64 1.64 1.64 0 0 0 1.64-1.64 1.64 1.64 0 0 0 1.64-1.64 1.64 1.64 0 0 0-1.64-1.64Z" />
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.78a1.64 1.64 0 0 0-1.64 1.64 1.64 1.64 0 0 0 1.64 1.64 1.64 1.64 0 0 0 1.64-1.64 1.64 1.64 0 0 0-1.64-1.64Z" />
                   </svg>
                   <span>LinkedIn</span>
                   <ExternalLink className="w-3 h-3 opacity-60" />
