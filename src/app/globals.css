@@ -9,7 +9,7 @@
 
   body {
     font-family: var(--font-poppins), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background-color: #ffffff;
+    background-color: #f8fafc;
     color: #0f172a;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -22,12 +22,85 @@
   }
 
   ::selection {
-    background-color: #dbeafe;
-    color: #1e40af;
+    background-color: #1e3a8a;
+    color: #ffffff;
   }
 }
 
-/* Subtle clean scrollbar */
+/* Floating & Morphing Keyframes for Hero Irregular Oval */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(0.8deg);
+  }
+}
+
+@keyframes float-badge-1 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes float-badge-2 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@keyframes morphShape {
+  0%, 100% {
+    border-radius: 58% 42% 63% 37% / 41% 58% 42% 59%;
+  }
+  50% {
+    border-radius: 42% 58% 38% 62% / 59% 41% 59% 41%;
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-float-badge-1 {
+  animation: float-badge-1 4.5s ease-in-out infinite;
+}
+
+.animate-float-badge-2 {
+  animation: float-badge-2 5s ease-in-out infinite 0.5s;
+}
+
+.irregular-oval-wrapper {
+  animation: morphShape 8s ease-in-out infinite alternate;
+  border-radius: 58% 42% 63% 37% / 41% 58% 42% 59%;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.irregular-oval-wrapper:hover {
+  transform: scale(1.02);
+}
+
+/* Clean Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 7px;
 }
@@ -42,7 +115,7 @@
   background: #94a3b8;
 }
 
-/* Consistent Max-Width Section Container */
+/* Section Container */
 .section-container {
   width: 100%;
   max-width: 1120px;
@@ -68,9 +141,6 @@
 
 /* Respect Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
   *,
   *::before,
   *::after {

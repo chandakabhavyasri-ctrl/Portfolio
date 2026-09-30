@@ -116,11 +116,11 @@ export const Contact: React.FC = () => {
           <div className="lg:col-span-5 space-y-4">
             
             {/* Email Card */}
-            <div className="bg-white rounded-xl p-5 border border-slate-200 shadow-2xs hover:border-slate-300 transition-colors">
+            <div className="bg-white rounded-xl p-5 border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-blue-400/60 hover:-translate-y-1 transition-all duration-300">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3">
                   <div className="p-2.5 rounded-lg bg-blue-50 text-blue-700 border border-blue-100">
-                    <Mail className="w-4 h-4" />
+                    <Mail className="w-5 h-5" />
                   </div>
                   <div>
                     <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">
@@ -128,7 +128,7 @@ export const Contact: React.FC = () => {
                     </span>
                     <a
                       href={`mailto:${personalInfo.email}`}
-                      className="block text-sm sm:text-base font-bold text-slate-900 hover:text-blue-600 transition-colors break-all"
+                      className="block text-sm sm:text-base font-bold text-slate-900 hover:text-blue-700 transition-colors break-all"
                     >
                       {personalInfo.email}
                     </a>
@@ -152,11 +152,11 @@ export const Contact: React.FC = () => {
             </div>
 
             {/* Phone Card */}
-            <div className="bg-white rounded-xl p-5 border border-slate-200 shadow-2xs hover:border-slate-300 transition-colors">
+            <div className="bg-white rounded-xl p-5 border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-blue-400/60 hover:-translate-y-1 transition-all duration-300">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3">
                   <div className="p-2.5 rounded-lg bg-blue-50 text-blue-700 border border-blue-100">
-                    <Phone className="w-4 h-4" />
+                    <Phone className="w-5 h-5" />
                   </div>
                   <div>
                     <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">
@@ -164,7 +164,7 @@ export const Contact: React.FC = () => {
                     </span>
                     <a
                       href={`tel:${personalInfo.rawPhone}`}
-                      className="block text-sm sm:text-base font-bold text-slate-900 hover:text-blue-600 transition-colors"
+                      className="block text-sm sm:text-base font-bold text-slate-900 hover:text-blue-700 transition-colors"
                     >
                       {personalInfo.phone}
                     </a>
@@ -188,10 +188,10 @@ export const Contact: React.FC = () => {
             </div>
 
             {/* Location Card */}
-            <div className="bg-white rounded-xl p-5 border border-slate-200 shadow-2xs">
+            <div className="bg-white rounded-xl p-5 border border-slate-200/90 shadow-2xs hover:border-slate-300 transition-colors">
               <div className="flex items-center gap-3">
                 <div className="p-2.5 rounded-lg bg-blue-50 text-blue-700 border border-blue-100">
-                  <MapPin className="w-4 h-4" />
+                  <MapPin className="w-5 h-5" />
                 </div>
                 <div>
                   <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">
@@ -205,7 +205,7 @@ export const Contact: React.FC = () => {
             </div>
 
             {/* Exact Profile Links */}
-            <div className="bg-white rounded-xl p-5 border border-slate-200 shadow-2xs">
+            <div className="bg-white rounded-xl p-5 border border-slate-200/90 shadow-2xs">
               <span className="text-xs font-bold text-slate-800 uppercase tracking-wider block mb-3">
                 Professional Profiles &amp; Repositories
               </span>
@@ -214,7 +214,7 @@ export const Contact: React.FC = () => {
                   href={personalInfo.linkedinUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 p-2.5 rounded-lg bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 text-slate-700 hover:text-blue-700 font-semibold text-xs transition-colors"
+                  className="flex items-center justify-center gap-2 p-2.5 rounded-lg bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-300 text-slate-700 hover:text-blue-700 font-semibold text-xs hover:-translate-y-0.5 transition-all"
                 >
                   <svg className="w-4 h-4 fill-current text-blue-600" viewBox="0 0 24 24">
                     <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.78a1.64 1.64 0 0 0-1.64 1.64 1.64 1.64 0 0 0 1.64 1.64 1.64 1.64 0 0 0 1.64-1.64 1.64 1.64 0 0 0-1.64-1.64Z" />
@@ -227,7 +227,7 @@ export const Contact: React.FC = () => {
                   href={personalInfo.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 p-2.5 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200 hover:border-slate-300 text-slate-700 hover:text-slate-900 font-semibold text-xs transition-colors"
+                  className="flex items-center justify-center gap-2 p-2.5 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200 hover:border-slate-400 text-slate-700 hover:text-slate-900 font-semibold text-xs hover:-translate-y-0.5 transition-all"
                 >
                   <svg className="w-4 h-4 fill-current text-slate-800" viewBox="0 0 24 24">
                     <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z" />
@@ -242,9 +242,9 @@ export const Contact: React.FC = () => {
 
           {/* Right Column: Direct Web3Forms Inquiry Form */}
           <div className="lg:col-span-7">
-            <div className="bg-white rounded-xl p-6 sm:p-7 border border-slate-200 shadow-2xs">
+            <div className="bg-white rounded-xl p-6 sm:p-7 border border-slate-200/90 shadow-2xs hover:border-slate-300 transition-colors">
               <div className="flex items-center gap-2.5 mb-5">
-                <div className="p-2 rounded-lg bg-blue-600 text-white">
+                <div className="p-2 rounded-lg bg-blue-700 text-white">
                   <MessageSquare className="w-4 h-4" />
                 </div>
                 <div>
@@ -335,7 +335,7 @@ export const Contact: React.FC = () => {
                           setFormData({ ...formData, name: e.target.value })
                         }
                         placeholder="e.g., Alex / Tech Recruiter"
-                        className="w-full px-3.5 py-2 rounded-lg border border-slate-300 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all bg-white"
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all bg-white"
                       />
                     </div>
 
@@ -355,7 +355,7 @@ export const Contact: React.FC = () => {
                           setFormData({ ...formData, email: e.target.value })
                         }
                         placeholder="you@company.com"
-                        className="w-full px-3.5 py-2 rounded-lg border border-slate-300 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all bg-white"
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all bg-white"
                       />
                     </div>
                   </div>
@@ -375,7 +375,7 @@ export const Contact: React.FC = () => {
                         setFormData({ ...formData, subject: e.target.value })
                       }
                       placeholder="e.g., Java Developer Opportunity"
-                      className="w-full px-3.5 py-2 rounded-lg border border-slate-300 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all bg-white"
+                      className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all bg-white"
                     />
                   </div>
 
@@ -395,14 +395,14 @@ export const Contact: React.FC = () => {
                         setFormData({ ...formData, message: e.target.value })
                       }
                       placeholder="Write your note, job description details, or interview invitation here..."
-                      className="w-full px-3.5 py-2 rounded-lg border border-slate-300 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all resize-y bg-white"
+                      className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all resize-y bg-white"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-blue-600 text-white font-semibold text-sm hover:bg-blue-700 active:bg-blue-800 disabled:bg-blue-400 shadow-2xs transition-colors cursor-pointer"
+                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-slate-900 text-white font-semibold text-sm hover:bg-blue-700 active:bg-slate-950 disabled:bg-slate-400 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
                   >
                     {isSubmitting ? (
                       <>

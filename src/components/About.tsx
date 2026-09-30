@@ -12,7 +12,7 @@ import { aboutData, trainingData } from "@/data/portfolioData";
 
 export const About: React.FC = () => {
   return (
-    <section id="about" className="py-16 sm:py-20 lg:py-24 bg-slate-50/60 border-b border-slate-100">
+    <section id="about" className="py-16 sm:py-20 lg:py-24 bg-slate-50/50 border-b border-slate-200/70">
       <div className="section-container">
         <SectionHeading
           badge="About Me"
@@ -31,27 +31,27 @@ export const About: React.FC = () => {
             ))}
 
             {/* Current Training Callout Card */}
-            <div className="mt-6 p-5 rounded-xl bg-white border border-slate-200 shadow-2xs">
+            <div className="mt-6 p-5 sm:p-6 rounded-xl bg-white border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-blue-400/50 hover:-translate-y-1 transition-all duration-300">
               <div className="flex items-start gap-3.5">
-                <div className="p-2 rounded-lg bg-blue-50 text-blue-700 shrink-0 mt-0.5 border border-blue-100">
-                  <BookOpen className="w-4 h-4" />
+                <div className="p-2.5 rounded-lg bg-blue-50 text-blue-700 shrink-0 mt-0.5 border border-blue-100">
+                  <BookOpen className="w-5 h-5" />
                 </div>
                 <div>
                   <div className="flex items-center gap-2 flex-wrap">
-                    <h3 className="font-semibold text-slate-900 text-sm sm:text-base">
+                    <h3 className="font-bold text-slate-900 text-sm sm:text-base">
                       {trainingData.course}
                     </h3>
-                    <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-blue-50 text-blue-700 border border-blue-200/70">
+                    <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-blue-50 text-blue-800 border border-blue-200">
                       {trainingData.status}
                     </span>
                   </div>
                   <p className="text-xs text-slate-500 font-medium mt-0.5">
-                    Institution: <span className="font-semibold text-slate-800">{trainingData.institution}</span>
+                    Institution: <span className="font-semibold text-slate-900">{trainingData.institution}</span>
                   </p>
                   <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
                     {trainingData.description}
                   </p>
-                  <div className="mt-3 flex flex-wrap gap-1.5">
+                  <div className="mt-3.5 flex flex-wrap gap-1.5">
                     {trainingData.modules.map((mod) => (
                       <span
                         key={mod}
@@ -87,11 +87,11 @@ export const About: React.FC = () => {
           </div>
 
           {/* Right Column: Key Metrics Grid */}
-          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
-            <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-2xs">
+          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3.5">
+            <div className="p-4 sm:p-4.5 rounded-xl bg-white border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-blue-400/50 hover:-translate-y-1 transition-all duration-300">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-blue-50 text-blue-700 border border-blue-100 flex items-center justify-center shrink-0">
-                  <GraduationCap className="w-4 h-4" />
+                <div className="w-10 h-10 rounded-lg bg-blue-50 text-blue-700 border border-blue-100 flex items-center justify-center shrink-0">
+                  <GraduationCap className="w-5 h-5" />
                 </div>
                 <div>
                   <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">
@@ -107,10 +107,10 @@ export const About: React.FC = () => {
               </div>
             </div>
 
-            <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-2xs">
+            <div className="p-4 sm:p-4.5 rounded-xl bg-white border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-blue-400/50 hover:-translate-y-1 transition-all duration-300">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-blue-50 text-blue-700 border border-blue-100 flex items-center justify-center shrink-0">
-                  <Cpu className="w-4 h-4" />
+                <div className="w-10 h-10 rounded-lg bg-blue-50 text-blue-700 border border-blue-100 flex items-center justify-center shrink-0">
+                  <Cpu className="w-5 h-5" />
                 </div>
                 <div>
                   <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">
@@ -126,10 +126,10 @@ export const About: React.FC = () => {
               </div>
             </div>
 
-            <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-2xs">
+            <div className="p-4 sm:p-4.5 rounded-xl bg-white border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-blue-400/50 hover:-translate-y-1 transition-all duration-300">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-blue-50 text-blue-700 border border-blue-100 flex items-center justify-center shrink-0">
-                  <Sparkles className="w-4 h-4" />
+                <div className="w-10 h-10 rounded-lg bg-blue-50 text-blue-700 border border-blue-100 flex items-center justify-center shrink-0">
+                  <Sparkles className="w-5 h-5" />
                 </div>
                 <div>
                   <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">
@@ -145,10 +145,10 @@ export const About: React.FC = () => {
               </div>
             </div>
 
-            <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-2xs">
+            <div className="p-4 sm:p-4.5 rounded-xl bg-white border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-blue-400/50 hover:-translate-y-1 transition-all duration-300">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-blue-50 text-blue-700 border border-blue-100 flex items-center justify-center shrink-0">
-                  <MapPin className="w-4 h-4" />
+                <div className="w-10 h-10 rounded-lg bg-blue-50 text-blue-700 border border-blue-100 flex items-center justify-center shrink-0">
+                  <MapPin className="w-5 h-5" />
                 </div>
                 <div>
                   <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">

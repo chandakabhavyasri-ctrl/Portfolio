@@ -5,7 +5,7 @@ import { educationData, trainingData } from "@/data/portfolioData";
 
 export const Education: React.FC = () => {
   return (
-    <section id="education" className="py-16 sm:py-20 lg:py-24 bg-slate-50/60 border-b border-slate-100">
+    <section id="education" className="py-16 sm:py-20 lg:py-24 bg-slate-50/50 border-b border-slate-200/70">
       <div className="section-container">
         <SectionHeading
           badge="Academics &amp; Training"
@@ -18,14 +18,14 @@ export const Education: React.FC = () => {
           {/* Formal Education: Left 7 Columns */}
           <div className="lg:col-span-7 space-y-4">
             <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2 mb-3">
-              <GraduationCap className="w-4 h-4 text-blue-600" />
+              <GraduationCap className="w-4 h-4 text-blue-700" />
               <span>Formal Education</span>
             </h3>
 
             {educationData.map((item, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-xl p-5 border border-slate-200 shadow-2xs hover:border-slate-300 transition-colors"
+                className="bg-white rounded-xl p-5 border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-blue-400/60 hover:-translate-y-1.5 transition-all duration-300"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                   <div>
@@ -43,7 +43,7 @@ export const Education: React.FC = () => {
                         {item.duration}
                       </span>
                     )}
-                    <span className="text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">
+                    <span className="text-xs font-bold text-blue-800 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">
                       {item.scoreLabel}: {item.score}
                     </span>
                   </div>
@@ -61,13 +61,13 @@ export const Education: React.FC = () => {
           {/* Specialized Training: Right 5 Columns */}
           <div className="lg:col-span-5 space-y-4">
             <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2 mb-3">
-              <BookOpen className="w-4 h-4 text-blue-600" />
+              <BookOpen className="w-4 h-4 text-blue-700" />
               <span>Specialized Training</span>
             </h3>
 
-            <div className="bg-white rounded-xl p-5 sm:p-6 border border-slate-200 shadow-2xs">
+            <div className="bg-white rounded-xl p-5 sm:p-6 border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-blue-400/60 hover:-translate-y-1.5 transition-all duration-300">
               <div className="flex items-center justify-between gap-2 mb-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">
+                <span className="text-xs font-bold uppercase tracking-wider text-blue-800 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">
                   {trainingData.status}
                 </span>
                 <span className="text-xs font-bold text-slate-600">
@@ -90,7 +90,7 @@ export const Education: React.FC = () => {
                   {trainingData.modules.map((mod) => (
                     <div
                       key={mod}
-                      className="flex items-center gap-2 p-2 rounded-lg bg-slate-50 border border-slate-200 text-xs font-medium text-slate-800"
+                      className="flex items-center gap-2 p-2 rounded-lg bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-800"
                     >
                       <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0" />
                       <span>{mod}</span>

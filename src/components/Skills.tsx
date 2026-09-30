@@ -16,24 +16,24 @@ export const Skills: React.FC = () => {
   const getCategoryIcon = (title: string) => {
     switch (title) {
       case "Programming Languages":
-        return <Code className="w-4 h-4 text-blue-600" />;
+        return <Code className="w-5 h-5 text-blue-700" />;
       case "Backend Engineering":
-        return <Server className="w-4 h-4 text-blue-600" />;
+        return <Server className="w-5 h-5 text-blue-700" />;
       case "Web Technologies":
-        return <Globe className="w-4 h-4 text-blue-600" />;
+        return <Globe className="w-5 h-5 text-blue-700" />;
       case "Databases & Storage":
-        return <Database className="w-4 h-4 text-blue-600" />;
+        return <Database className="w-5 h-5 text-blue-700" />;
       case "Core Computer Science":
-        return <Layers className="w-4 h-4 text-blue-600" />;
+        return <Layers className="w-5 h-5 text-blue-700" />;
       case "Tools & Environments":
-        return <Wrench className="w-4 h-4 text-blue-600" />;
+        return <Wrench className="w-5 h-5 text-blue-700" />;
       default:
-        return <Code className="w-4 h-4 text-blue-600" />;
+        return <Code className="w-5 h-5 text-blue-700" />;
     }
   };
 
   return (
-    <section id="skills" className="py-16 sm:py-20 lg:py-24 bg-white border-b border-slate-100">
+    <section id="skills" className="py-16 sm:py-20 lg:py-24 bg-white border-b border-slate-200/70">
       <div className="section-container">
         <SectionHeading
           badge="Technical Skills"
@@ -46,11 +46,11 @@ export const Skills: React.FC = () => {
           {skillCategories.map((category) => (
             <div
               key={category.title}
-              className="bg-white rounded-xl p-5 sm:p-6 border border-slate-200 shadow-2xs hover:border-slate-300 transition-colors flex flex-col justify-between"
+              className="bg-white rounded-xl p-5 sm:p-6 border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-blue-400/60 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between"
             >
               <div>
-                <div className="flex items-center gap-2.5 mb-4">
-                  <div className="p-2 rounded-lg bg-blue-50 border border-blue-100 shrink-0">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2.5 rounded-lg bg-blue-50 border border-blue-100 shrink-0">
                     {getCategoryIcon(category.title)}
                   </div>
                   <h3 className="font-bold text-sm sm:text-base text-slate-900">
@@ -63,7 +63,7 @@ export const Skills: React.FC = () => {
                   {category.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-slate-50 text-slate-800 border border-slate-200 hover:bg-blue-50 hover:text-blue-800 hover:border-blue-200 transition-colors"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold bg-slate-50 text-slate-800 border border-slate-200 hover:bg-blue-50 hover:text-blue-900 hover:border-blue-300 transition-colors"
                     >
                       <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
                       {skill}
@@ -72,27 +72,27 @@ export const Skills: React.FC = () => {
                 </div>
               </div>
 
-              <div className="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 font-medium">
+              <div className="mt-5 pt-3.5 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 font-medium">
                 <span>{category.skills.length} competencies</span>
-                <span className="text-blue-700">Resume Verified</span>
+                <span className="text-blue-700 font-semibold">Resume Verified</span>
               </div>
             </div>
           ))}
         </div>
 
         {/* Soft Skills Banner */}
-        <div className="mt-8 bg-slate-50 rounded-xl p-5 sm:p-6 border border-slate-200">
+        <div className="mt-8 bg-slate-50/70 rounded-xl p-5 sm:p-6 border border-slate-200 hover:border-blue-300/60 transition-colors">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <div className="flex items-center gap-2.5">
-              <div className="p-2 rounded-lg bg-blue-50 text-blue-700 border border-blue-100 shrink-0">
-                <Users className="w-4 h-4" />
+            <div className="flex items-center gap-3">
+              <div className="p-2.5 rounded-lg bg-blue-50 text-blue-700 border border-blue-100 shrink-0">
+                <Users className="w-5 h-5" />
               </div>
               <div>
                 <h3 className="font-bold text-sm sm:text-base text-slate-900">
                   Professional &amp; Interpersonal Skills
                 </h3>
                 <p className="text-xs text-slate-500">
-                  Key collaboration strengths and work methodologies
+                  Key collaboration strengths and engineering work methodologies
                 </p>
               </div>
             </div>
@@ -101,7 +101,7 @@ export const Skills: React.FC = () => {
               {softSkills.map((skill) => (
                 <span
                   key={skill}
-                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-semibold bg-white text-slate-800 border border-slate-200 shadow-2xs"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md text-xs font-bold bg-white text-slate-800 border border-slate-200/90 shadow-2xs hover:border-blue-300 transition-colors"
                 >
                   <Check className="w-3.5 h-3.5 text-blue-600" />
                   {skill}

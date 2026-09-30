@@ -5,7 +5,7 @@ import { experienceData } from "@/data/portfolioData";
 
 export const Experience: React.FC = () => {
   return (
-    <section id="experience" className="py-16 sm:py-20 lg:py-24 bg-slate-50/60 border-b border-slate-100">
+    <section id="experience" className="py-16 sm:py-20 lg:py-24 bg-slate-50/50 border-b border-slate-200/70">
       <div className="section-container">
         <SectionHeading
           badge="Work History"
@@ -17,7 +17,7 @@ export const Experience: React.FC = () => {
           {experienceData.map((exp, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl p-6 border border-slate-200 shadow-2xs hover:border-slate-300 transition-colors"
+              className="bg-white rounded-xl p-6 border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-blue-400/60 hover:-translate-y-1.5 transition-all duration-300"
             >
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-3">
                 <div className="flex items-center gap-3">
@@ -35,7 +35,7 @@ export const Experience: React.FC = () => {
                   </div>
                 </div>
 
-                <span className="self-start sm:self-auto px-3 py-1 rounded-md text-xs font-semibold bg-slate-50 text-slate-700 border border-slate-200">
+                <span className="self-start sm:self-auto px-3 py-1 rounded-md text-xs font-semibold bg-blue-50 text-blue-800 border border-blue-200">
                   {exp.type}
                 </span>
               </div>
@@ -52,7 +52,7 @@ export const Experience: React.FC = () => {
                 {exp.skillsGained.map((skill) => (
                   <span
                     key={skill}
-                    className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-medium bg-slate-50 text-slate-700 border border-slate-200"
+                    className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-50 text-slate-700 border border-slate-200"
                   >
                     <CheckCircle2 className="w-3 h-3 text-blue-600" />
                     {skill}
