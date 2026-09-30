@@ -53,7 +53,7 @@ export const Contact: React.FC = () => {
     setErrorMessage("");
 
     try {
-      // Direct browser-to-Web3Forms submission (bypasses server Cloudflare bot-challenges)
+      // Optimized Web3Forms payload with anti-spam headers
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
@@ -64,9 +64,13 @@ export const Contact: React.FC = () => {
           access_key: "cf5d41f8-e639-4bcf-a041-e0df4c5f385d",
           name: formData.name,
           email: formData.email,
-          subject: formData.subject || `New Portfolio Message from ${formData.name}`,
+          replyto: formData.email,
+          subject: formData.subject
+            ? `[Portfolio Contact] ${formData.subject} - from ${formData.name}`
+            : `[Portfolio Contact] New Inquiry from ${formData.name}`,
           message: formData.message,
-          from_name: `${formData.name} (Portfolio Inquiry)`,
+          from_name: "Bhavya Portfolio Website",
+          botcheck: "",
         }),
       });
 
@@ -263,7 +267,7 @@ export const Contact: React.FC = () => {
                     Message Sent Successfully!
                   </h4>
                   <p className="text-xs sm:text-sm text-emerald-800 max-w-md mx-auto">
-                    Thank you for reaching out. Your message has been sent directly to{" "}
+                    Thank you for reaching out. Your message has been delivered directly to{" "}
                     <strong>{personalInfo.email}</strong>. Bhavya will respond shortly.
                   </p>
                   <button
