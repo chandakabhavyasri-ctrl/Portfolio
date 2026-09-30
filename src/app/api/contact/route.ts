@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 
+const WEB3FORMS_ACCESS_KEY = "cf5d41f8-e639-4bcf-a041-e0df4c5f385d";
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -7,7 +9,7 @@ export async function POST(request: Request) {
 
     // Reject bot submissions silently
     if (_honey) {
-      return NextResponse.json({ success: true });
+      return NextResponse.json({ success: true, message: "Bot submission ignored." });
     }
 
     if (!name || !email || !message) {
@@ -17,39 +19,38 @@ export async function POST(request: Request) {
       );
     }
 
-    // Send from server to eliminate CORS or client browser ad-block restrictions
-    const response = await fetch("https://formsubmit.co/ajax/chandakabhavyasri@gmail.com", {
+    // Submit directly to Web3Forms API
+    const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        "User-Agent": "Bhavya-Portfolio-Server/1.0",
       },
       body: JSON.stringify({
-        Name: name,
-        Email: email,
-        Subject: subject || `New Portfolio Message from ${name}`,
-        Message: message,
-        _subject: `New Message on Portfolio from ${name}`,
-        _template: "table",
-        _captcha: "false",
+        access_key: WEB3FORMS_ACCESS_KEY,
+        name: name,
+        email: email,
+        subject: subject || `New Portfolio Inquiry from ${name}`,
+        message: message,
+        from_name: `${name} (Portfolio Contact)`,
       }),
     });
 
-    const result = await response.json().catch(() => ({}));
+    const data = await response.json();
 
-    if (response.ok) {
-      return NextResponse.json({ success: true, result });
+    if (response.ok && data.success) {
+      return NextResponse.json({ success: true, message: "Message sent successfully!" });
     } else {
+      console.error("Web3Forms error response:", data);
       return NextResponse.json(
-        { error: result.message || "Failed to deliver email" },
+        { error: data.message || "Unable to send message at this time." },
         { status: 500 }
       );
     }
   } catch (err: unknown) {
-    console.error("API contact error:", err);
+    console.error("Contact API exception:", err);
     return NextResponse.json(
-      { error: "Internal server error occurred while sending message." },
+      { error: "Server connection issue. Please try again." },
       { status: 500 }
     );
   }
