@@ -1,18 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-sans",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-poppins",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bhavyachandaka.dev"),
-  title: "Bhavya Chandaka | Java Developer",
+  metadataBase: new URL("https://bhavyachandaka.vercel.app"),
+  title: "Bhavya Chandaka | Java Developer & Software Engineer",
   description:
-    "Java Developer and Computer Science graduate with skills in Java, Spring Boot, Servlets, JDBC, SQL, MySQL, HTML and CSS. Actively seeking entry-level software engineering roles.",
+    "Portfolio of Bhavya Chandaka - Computer Science graduate and Java Developer with skills in Core Java, Spring Boot, Servlets, JDBC, SQL, MySQL, and web development.",
   keywords: [
     "Bhavya Chandaka",
     "Java Developer",
@@ -31,10 +32,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://bhavyachandaka.dev",
-    title: "Bhavya Chandaka | Java Developer",
+    url: "https://bhavyachandaka.vercel.app",
+    title: "Bhavya Chandaka | Java Developer & Software Engineer",
     description:
-      "Java Developer and Computer Science graduate with skills in Java, Spring Boot, Servlets, JDBC, SQL, MySQL, HTML and CSS.",
+      "Portfolio of Bhavya Chandaka - Computer Science graduate and Java Developer with skills in Core Java, Spring Boot, Servlets, JDBC, SQL, MySQL, and web development.",
     siteName: "Bhavya Chandaka Portfolio",
     images: [
       {
@@ -52,7 +53,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#ffffff",
+  themeColor: "#2563eb",
   width: "device-width",
   initialScale: 1,
 };
@@ -63,8 +64,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} scroll-smooth`}>
-      <body className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased selection:bg-blue-100 selection:text-blue-900">
+    <html lang="en" className={`${poppins.variable} scroll-smooth`}>
+      <body className="min-h-screen bg-white text-slate-900 font-sans antialiased selection:bg-blue-100 selection:text-blue-900">
         {children}
       </body>
     </html>

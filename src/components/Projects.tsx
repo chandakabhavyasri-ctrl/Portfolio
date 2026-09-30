@@ -1,13 +1,11 @@
 import React from "react";
 import {
-  FolderGit2,
   CheckCircle2,
   Database,
   Server,
   Layers,
   Sparkles,
-  ArrowUpRight,
-  Code2,
+  ExternalLink,
 } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import { projectsData } from "@/data/portfolioData";
@@ -17,81 +15,95 @@ export const Projects: React.FC = () => {
   const secondaryProjects = projectsData.filter((p) => !p.featured);
 
   return (
-    <section id="projects" className="py-16 md:py-20 lg:py-24 bg-white border-y border-slate-100">
+    <section id="projects" className="py-16 sm:py-20 lg:py-24 bg-white border-b border-slate-100">
       <div className="section-container">
         <SectionHeading
-          badge="Portfolio Projects"
-          title="Featured Engineering Projects"
-          subtitle="Real-world applications showcasing Core Java, Spring Boot, Servlets, JDBC database connectivity, and full CRUD architecture."
+          badge="Featured Projects"
+          title="Software Engineering Projects"
+          subtitle="Production-grade applications engineered with Core Java, Spring Boot, Servlets, JDBC database connectivity, and full CRUD architecture."
         />
 
         {/* 1. PRIMARY FEATURED PROJECT: Student Management System */}
-        <div className="mb-10">
-          <div className="relative rounded-2xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white p-6 sm:p-8 lg:p-10 shadow-lg border border-slate-700/60 overflow-hidden">
-            {/* Subtle glow effect */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
-            
-            <div className="relative z-10">
-              {/* Header Badges */}
-              <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-500/20 text-blue-300 border border-blue-400/30">
-                  <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-                  <span>Primary Featured Project</span>
-                </div>
-                <span className="text-xs font-semibold text-slate-300 bg-slate-800/80 px-3 py-1 rounded-md border border-slate-700">
-                  {primaryProject.category}
-                </span>
+        <div className="mb-8">
+          <div className="rounded-xl bg-white border-2 border-blue-600/30 p-6 sm:p-8 lg:p-9 shadow-sm">
+            {/* Header Tags */}
+            <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200">
+                <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+                <span>Primary Project</span>
+              </div>
+              <span className="text-xs font-semibold text-slate-600 bg-slate-100 px-3 py-1 rounded-md border border-slate-200">
+                {primaryProject.category}
+              </span>
+            </div>
+
+            {/* Title & Description */}
+            <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
+              <div>
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+                  {primaryProject.title}
+                </h3>
+                <p className="mt-2 text-sm sm:text-base text-slate-600 leading-relaxed max-w-3xl">
+                  {primaryProject.description}
+                </p>
               </div>
 
-              {/* Title & Description */}
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-                {primaryProject.title}
-              </h3>
-              <p className="mt-3 text-slate-300 text-sm sm:text-base leading-relaxed max-w-3xl">
-                {primaryProject.description}
-              </p>
+              {primaryProject.githubUrl && (
+                <a
+                  href={primaryProject.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="self-start inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold rounded-lg bg-slate-900 text-white hover:bg-slate-800 transition-colors shrink-0 shadow-2xs"
+                >
+                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z" />
+                  </svg>
+                  <span>View Repository</span>
+                  <ExternalLink className="w-3 h-3 opacity-70" />
+                </a>
+              )}
+            </div>
 
-              {/* Tech Stack Chips */}
-              <div className="mt-5 flex flex-wrap gap-2">
-                {primaryProject.technologies.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1 rounded-lg text-xs font-semibold bg-white/10 text-white border border-white/15 backdrop-blur-xs"
-                  >
-                    {tech}
-                  </span>
+            {/* Tech Stack Badges */}
+            <div className="mt-4 flex flex-wrap gap-2">
+              {primaryProject.technologies.map((tech) => (
+                <span
+                  key={tech}
+                  className="px-2.5 py-1 rounded-md text-xs font-semibold bg-blue-50 text-blue-800 border border-blue-200/80"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            {/* Key Implementations & Features */}
+            <div className="mt-6 pt-5 border-t border-slate-200">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700 mb-3">
+                Key Architectural &amp; Functional Highlights:
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {primaryProject.features.map((feature, idx) => (
+                  <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700">
+                    <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+                    <span>{feature}</span>
+                  </div>
                 ))}
               </div>
+            </div>
 
-              {/* Key Architectural & Functional Highlights */}
-              <div className="mt-8 pt-6 border-t border-slate-700/70">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">
-                  Key Implementations &amp; Features:
-                </h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {primaryProject.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-200">
-                      <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
-                      <span>{feature}</span>
-                    </div>
-                  ))}
-                </div>
+            {/* Architecture Footer Callouts */}
+            <div className="mt-6 pt-4 border-t border-slate-100 flex flex-wrap items-center gap-4 text-xs text-slate-500 font-medium">
+              <div className="flex items-center gap-1.5">
+                <Server className="w-3.5 h-3.5 text-blue-600" />
+                <span>Spring Boot REST Backend</span>
               </div>
-
-              {/* Technical Footnote */}
-              <div className="mt-6 flex flex-wrap items-center gap-4 text-xs text-slate-400 pt-4 border-t border-slate-800">
-                <div className="flex items-center gap-1.5">
-                  <Server className="w-3.5 h-3.5 text-blue-400" />
-                  <span>Spring Boot Backend</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <Database className="w-3.5 h-3.5 text-blue-400" />
-                  <span>MySQL Database</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <Layers className="w-3.5 h-3.5 text-blue-400" />
-                  <span>Java OOP Architecture</span>
-                </div>
+              <div className="flex items-center gap-1.5">
+                <Database className="w-3.5 h-3.5 text-blue-600" />
+                <span>MySQL Relational Persistence</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Layers className="w-3.5 h-3.5 text-blue-600" />
+                <span>Java OOP Modular Design</span>
               </div>
             </div>
           </div>
@@ -102,31 +114,31 @@ export const Projects: React.FC = () => {
           {secondaryProjects.slice(0, 2).map((project) => (
             <div
               key={project.id}
-              className="bg-white rounded-xl p-6 sm:p-7 border border-slate-200 shadow-2xs hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between"
+              className="bg-white rounded-xl p-6 border border-slate-200 shadow-2xs hover:border-slate-300 transition-colors flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200/60">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200/70">
                     {project.category}
                   </span>
-                  <span className="text-xs text-slate-400 font-mono font-medium">
+                  <span className="text-xs text-slate-500 font-medium">
                     Servlets &bull; JDBC
                   </span>
                 </div>
 
-                <h3 className="text-xl font-bold text-slate-900 tracking-tight">
+                <h3 className="text-lg font-bold text-slate-900 tracking-tight">
                   {project.title}
                 </h3>
-                <p className="mt-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
                   {project.description}
                 </p>
 
-                {/* Tech Pills */}
-                <div className="mt-4 flex flex-wrap gap-1.5">
+                {/* Tech Chips */}
+                <div className="mt-3.5 flex flex-wrap gap-1.5">
                   {project.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200/80"
+                      className="px-2.5 py-0.5 rounded-md text-xs font-medium bg-slate-50 text-slate-700 border border-slate-200"
                     >
                       {tech}
                     </span>
@@ -135,7 +147,7 @@ export const Projects: React.FC = () => {
 
                 {/* Features List */}
                 <div className="mt-5 space-y-2 pt-4 border-t border-slate-100">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-600">
                     Core Capabilities:
                   </h4>
                   {project.features.map((feat, i) => (
@@ -147,28 +159,38 @@ export const Projects: React.FC = () => {
                 </div>
               </div>
 
-              <div className="mt-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-                <span className="font-medium text-slate-600">Enterprise Java Architecture</span>
-                <span className="font-medium text-emerald-600">Full CRUD Verified</span>
+              <div className="mt-6 pt-3.5 border-t border-slate-100 flex items-center justify-between text-xs">
+                <span className="font-medium text-slate-500">Enterprise Java Architecture</span>
+                {project.githubUrl && (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 font-semibold text-blue-600 hover:text-blue-800 transition-colors"
+                  >
+                    <span>GitHub</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                )}
               </div>
             </div>
           ))}
         </div>
 
-        {/* 4. SECONDARY / COMPACT ML PROJECT (Hybrid Disaster Prediction) */}
+        {/* 4. SECONDARY ML PROJECT (Hybrid Disaster Prediction) */}
         {secondaryProjects[2] && (
-          <div className="bg-slate-50 rounded-xl p-6 border border-slate-200 shadow-2xs">
+          <div className="bg-slate-50 rounded-xl p-5 sm:p-6 border border-slate-200 shadow-2xs">
             <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
               <div className="space-y-2 max-w-3xl">
                 <div className="flex items-center gap-2 flex-wrap">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-purple-700 bg-purple-50 px-2.5 py-0.5 rounded-md border border-purple-200/60">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-700 bg-white px-2.5 py-0.5 rounded-md border border-slate-200">
                     {secondaryProjects[2].category}
                   </span>
                   <span className="text-xs text-slate-500 font-medium">
-                    Team Leadership &bull; Research
+                    Team Leadership &bull; Research Project
                   </span>
                 </div>
-                <h3 className="text-lg font-bold text-slate-900">
+                <h3 className="text-base sm:text-lg font-bold text-slate-900">
                   {secondaryProjects[2].title}
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
@@ -188,13 +210,13 @@ export const Projects: React.FC = () => {
               </div>
 
               {/* Highlights */}
-              <div className="md:w-72 shrink-0 bg-white p-3.5 rounded-lg border border-slate-200 text-xs space-y-2">
+              <div className="md:w-72 shrink-0 bg-white p-3.5 rounded-lg border border-slate-200 text-xs space-y-1.5">
                 <h4 className="font-bold text-slate-800 uppercase tracking-wide text-[11px]">
                   Project Contributions:
                 </h4>
                 {secondaryProjects[2].features.map((feat, i) => (
                   <div key={i} className="flex items-start gap-1.5 text-slate-600">
-                    <span className="text-purple-600 font-bold">&bull;</span>
+                    <span className="text-blue-600 font-bold">&bull;</span>
                     <span>{feat}</span>
                   </div>
                 ))}

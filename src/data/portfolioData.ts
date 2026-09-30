@@ -5,6 +5,7 @@ export interface Project {
   technologies: string[];
   description: string;
   features: string[];
+  githubUrl?: string;
   featured?: boolean;
 }
 
@@ -17,6 +18,7 @@ export interface Experience {
   role: string;
   organization: string;
   type: string;
+  duration?: string;
   description: string;
   skillsGained: string[];
 }
@@ -41,23 +43,23 @@ export interface TrainingItem {
 export const personalInfo = {
   name: "Bhavya Chandaka",
   roleTitle: "Java Developer | Software Engineer",
-  headline: "Java Developer & Software Engineer",
+  headline: "Aspiring Software Engineer & Java Backend Developer",
   tagline: "Computer Science graduate and aspiring Java Developer with a strong foundation in Core Java, Spring Boot, Servlets, JDBC, SQL, MySQL, and modern web development. Currently pursuing Java Full Stack Development training at JSPIDERS.",
   location: "Hyderabad, India",
   phone: "+91 9182290967",
   rawPhone: "9182290967",
   email: "chandakabhavyasri@gmail.com",
-  githubUrl: "https://github.com",
-  linkedinUrl: "https://linkedin.com",
+  githubUrl: "https://github.com/chandakabhavyasri-ctrl",
+  linkedinUrl: "https://www.linkedin.com/in/bhavya-chandaka-335865287/?isSelfProfile=false",
   profileImage: "/bhavya-chandaka.jpg",
-  availability: "Available for Entry-Level Roles",
+  availability: "Available for Full-time Roles",
 };
 
 export const aboutData = {
   summary: [
-    "I am a Computer Science Engineering graduate with a strong focus on Java backend development and software engineering fundamentals. I have built practical web applications using Core Java, Spring Boot, Servlets, JDBC, SQL, and MySQL.",
-    "Currently, I am undergoing intensive Java Full Stack Development training at JSPIDERS to deepen my mastery of enterprise Java, relational databases, object-oriented design principles, and scalable system architecture.",
-    "I am seeking an entry-level Java Developer or Software Engineer opportunity where I can apply my programming skills, write clean and efficient code, and contribute effectively to real-world software engineering projects."
+    "I am a Computer Science Engineering graduate with a strong passion for backend architecture, object-oriented programming, and reliable database systems. My technical foundation spans Core Java, Spring Boot, Servlets, JDBC, SQL, and MySQL, alongside responsive web frontend development.",
+    "Currently, I am expanding my practical engineering skills through professional Java Full Stack Development training at JSPIDERS, focusing on building end-to-end web applications, writing clean modular code, and mastering relational schema design.",
+    "I am actively seeking an entry-level Java Developer or Software Engineer role where I can contribute to meaningful engineering projects, solve real-world problems, and continuously grow alongside experienced engineering teams."
   ],
   highlights: [
     { label: "Target Role", value: "Java Developer / Software Engineer" },
@@ -71,34 +73,34 @@ export const aboutData = {
 
 export const skillCategories: SkillCategory[] = [
   {
-    title: "Programming",
+    title: "Programming Languages",
     skills: ["Java", "SQL"]
   },
   {
-    title: "Backend Development",
-    skills: ["Core Java", "Servlets", "JDBC", "Spring Boot"]
+    title: "Backend Engineering",
+    skills: ["Core Java", "Spring Boot", "Servlets", "JDBC"]
   },
   {
     title: "Web Technologies",
     skills: ["HTML5", "CSS3", "JavaScript"]
   },
   {
-    title: "Databases",
+    title: "Databases & Storage",
     skills: ["MySQL", "SQL"]
   },
   {
-    title: "Core Concepts",
-    skills: ["OOPs", "DBMS", "Basic Data Structures"]
+    title: "Core Computer Science",
+    skills: ["OOPs Concepts", "DBMS", "Basic Data Structures"]
   },
   {
-    title: "Tools & IDEs",
-    skills: ["Eclipse IDE", "VS Code"]
+    title: "Tools & Environments",
+    skills: ["Eclipse IDE", "VS Code", "Git"]
   }
 ];
 
 export const softSkills: string[] = [
   "Team Leadership",
-  "Communication",
+  "Technical Communication",
   "Problem Solving",
   "Team Collaboration"
 ];
@@ -109,57 +111,61 @@ export const projectsData: Project[] = [
     title: "Student Management System",
     category: "Full-Stack Java Web Application",
     technologies: ["Java", "Spring Boot", "MySQL", "HTML", "CSS"],
-    description: "Developed a web-based student management application using Java and Spring Boot for backend development, streamlining student record administration.",
+    description: "Developed a comprehensive web-based student management application using Java and Spring Boot for backend development, streamlining administrative workflows.",
     features: [
-      "Complete CRUD operations: Add student, View student details, Update student records, and Delete student profiles",
-      "Robust MySQL database integration ensuring structured data persistence and relational integrity",
-      "Implemented Core Java OOP concepts for modular, scalable, and maintainable backend architecture",
-      "Responsive web interface using HTML and CSS for administrative usability"
+      "Implemented full CRUD operations: Add student, View records, Update student details, and Delete profiles",
+      "Integrated MySQL database for secure relational data persistence and structured querying",
+      "Applied Core Java OOP principles (Encapsulation, Inheritance, Polymorphism) for modular architecture",
+      "Designed a clean, responsive user interface using HTML and CSS for administrative operations"
     ],
+    githubUrl: "https://github.com/chandakabhavyasri-ctrl",
     featured: true
   },
   {
     id: "employee-management-system",
     title: "Employee Management System",
-    category: "Java Enterprise Application",
+    category: "Enterprise Java Application",
     technologies: ["Java", "Servlets", "JDBC", "MySQL", "HTML", "CSS"],
-    description: "An enterprise-grade employee record management system engineered with Java Servlets and JDBC for structured corporate staff administration.",
+    description: "An enterprise employee management application engineered to handle employee records, department allocations, and relational database operations.",
     features: [
-      "End-to-end employee record management with full CRUD functionality",
-      "Direct JDBC database connectivity for reliable query execution and transactional safety",
-      "Servlet-based request routing, session management, and business logic execution",
-      "MySQL database schema with indexed queries for employee data retrieval",
-      "Clean HTML/CSS user interface for intuitive record management"
+      "Structured employee record management with end-to-end CRUD capabilities",
+      "Direct JDBC database connectivity for reliable transaction execution and query dispatch",
+      "Java Servlets managing HTTP requests, response routing, and business logic execution",
+      "Normalized MySQL relational database schema for employee data integrity",
+      "Clean HTML5/CSS3 frontend templates for smooth data input and review"
     ],
+    githubUrl: "https://github.com/chandakabhavyasri-ctrl",
     featured: false
   },
   {
     id: "library-management-system",
     title: "Library Management System",
-    category: "Java Enterprise Application",
+    category: "Enterprise Java Application",
     technologies: ["Java", "Servlets", "JDBC", "MySQL", "HTML", "CSS"],
-    description: "A centralized library administration system designed to track book inventory, user memberships, and circulation lifecycles.",
+    description: "A centralized library administration system designed to track book inventory, member registrations, and circulation workflows.",
     features: [
-      "Comprehensive management of book inventory and registered member records",
-      "Automated issue and return tracking with book availability status updates",
-      "Search capability to look up books by title, author, or category",
-      "Servlet and JDBC backend architecture communicating with MySQL database",
-      "Structured relational schema for error-free circulation records"
+      "Complete book catalogue and registered member management system",
+      "Automated issue and return tracking with real-time book availability status",
+      "Search functionality to quickly find books by title, author, or category",
+      "Servlet and JDBC backend handling business operations and data persistence",
+      "Relational MySQL database ensuring consistent circulation transaction history"
     ],
+    githubUrl: "https://github.com/chandakabhavyasri-ctrl",
     featured: false
   },
   {
     id: "disaster-prediction-ml",
     title: "Hybrid Machine Learning Framework for Disaster Prediction & Management",
-    category: "Machine Learning & Academic Research",
+    category: "Machine Learning & Research Project",
     technologies: ["Python", "Neural Networks", "XGBoost"],
     description: "A predictive machine learning framework designed to analyze multi-source environmental data to forecast and manage natural disaster occurrences.",
     features: [
       "Predictive modeling for flood, earthquake, and cyclone forecasting",
       "Implemented Hybrid Neural Networks and XGBoost algorithms for classification accuracy",
-      "Served as Team Leader, coordinating project milestones, member tasks, and code reviews",
-      "Authored comprehensive technical documentation and presented project findings"
+      "Served as Team Leader, coordinating milestones, task delegation, and code integration",
+      "Authored comprehensive technical documentation and conducted project presentations"
     ],
+    githubUrl: "https://github.com/chandakabhavyasri-ctrl",
     featured: false
   }
 ];
@@ -169,6 +175,7 @@ export const experienceData: Experience[] = [
     role: "Data Science Intern",
     organization: "EduSkills Foundation",
     type: "Internship",
+    duration: "Completed Internship",
     description: "Completed a Data Science internship, gaining hands-on exposure to data analysis, data preprocessing workflows, and machine learning concepts.",
     skillsGained: ["Data Analysis", "Machine Learning Concepts", "Data Interpretation"]
   },
@@ -176,14 +183,15 @@ export const experienceData: Experience[] = [
     role: "Android Development Intern",
     organization: "EduSkills Foundation",
     type: "Internship",
-    description: "Completed an Android Development internship, gaining hands-on exposure to mobile application development, Android UI components, and application lifecycle.",
+    duration: "Completed Internship",
+    description: "Completed an Android Development internship, gaining hands-on exposure to mobile application development, Android UI components, and application lifecycles.",
     skillsGained: ["Mobile App Development", "Android UI", "Java/XML Fundamentals"]
   }
 ];
 
 export const educationData: EducationItem[] = [
   {
-    degree: "B.Tech (Computer Science & Engineering)",
+    degree: "B.Tech in Computer Science & Engineering",
     institution: "Eluru College of Engineering and Technology, JNTUK",
     duration: "2022 – 2026",
     score: "8.1",
@@ -202,7 +210,7 @@ export const educationData: EducationItem[] = [
     institution: "SK RES High School, Eluru",
     score: "96%",
     scoreLabel: "Percentage",
-    details: "Graduated with academic distinction."
+    details: "Graduated with high academic distinction."
   }
 ];
 

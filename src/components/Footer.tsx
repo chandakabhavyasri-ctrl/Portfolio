@@ -4,20 +4,20 @@ import { personalInfo } from "@/data/portfolioData";
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-slate-900 text-slate-400 py-8 border-t border-slate-800">
-      <div className="section-container flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+    <footer className="bg-slate-900 text-slate-400 py-7 border-t border-slate-800">
+      <div className="section-container flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
         <p className="text-slate-400 text-center sm:text-left">
-          &copy; {new Date().getFullYear()} {personalInfo.name}. Built with Next.js.
+          &copy; {new Date().getFullYear()} {personalInfo.name}. All rights reserved.
         </p>
 
-        <div className="flex items-center gap-6">
-          <span className="text-slate-500">
-            {personalInfo.headline}
+        <div className="flex items-center gap-5">
+          <span className="text-slate-500 hidden md:inline">
+            Java Developer &bull; Software Engineer
           </span>
 
           <a
             href="#home"
-            className="inline-flex items-center gap-1.5 text-slate-400 hover:text-white transition-colors"
+            className="inline-flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors"
             aria-label="Back to top"
           >
             <span>Back to top</span>

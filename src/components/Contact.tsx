@@ -53,7 +53,6 @@ export const Contact: React.FC = () => {
     setErrorMessage("");
 
     try {
-      // Optimized Web3Forms payload with anti-spam headers
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
@@ -66,10 +65,10 @@ export const Contact: React.FC = () => {
           email: formData.email,
           replyto: formData.email,
           subject: formData.subject
-            ? `[Portfolio Contact] ${formData.subject} - from ${formData.name}`
-            : `[Portfolio Contact] New Inquiry from ${formData.name}`,
+            ? `[Portfolio Inquiry] ${formData.subject} - ${formData.name}`
+            : `[Portfolio Inquiry] New message from ${formData.name}`,
           message: formData.message,
-          from_name: "Bhavya Portfolio Website",
+          from_name: "Bhavya Portfolio Contact",
           botcheck: "",
         }),
       });
@@ -103,7 +102,7 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-16 md:py-20 lg:py-24 bg-slate-50">
+    <section id="contact" className="py-16 sm:py-20 lg:py-24 bg-white">
       <div className="section-container">
         <SectionHeading
           badge="Get in Touch"
@@ -112,17 +111,19 @@ export const Contact: React.FC = () => {
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-          {/* Left Column: Direct Contact Info */}
+          
+          {/* Left Column: Direct Contact Info & Verified Social Links */}
           <div className="lg:col-span-5 space-y-4">
+            
             {/* Email Card */}
-            <div className="bg-white rounded-xl p-5 border border-slate-200 shadow-2xs hover:shadow-sm transition-all">
+            <div className="bg-white rounded-xl p-5 border border-slate-200 shadow-2xs hover:border-slate-300 transition-colors">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3">
                   <div className="p-2.5 rounded-lg bg-blue-50 text-blue-700 border border-blue-100">
-                    <Mail className="w-5 h-5" />
+                    <Mail className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-xs font-semibold text-slate-500 uppercase tracking-wide">
+                    <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">
                       Email Address
                     </span>
                     <a
@@ -138,7 +139,7 @@ export const Contact: React.FC = () => {
                   type="button"
                   onClick={() => handleCopy(personalInfo.email, "email")}
                   title="Copy email to clipboard"
-                  className="p-2 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer shrink-0 ml-2"
+                  className="p-2 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-50 transition-colors cursor-pointer shrink-0 ml-2"
                   aria-label="Copy email"
                 >
                   {copiedEmail ? (
@@ -151,19 +152,19 @@ export const Contact: React.FC = () => {
             </div>
 
             {/* Phone Card */}
-            <div className="bg-white rounded-xl p-5 border border-slate-200 shadow-2xs hover:shadow-sm transition-all">
+            <div className="bg-white rounded-xl p-5 border border-slate-200 shadow-2xs hover:border-slate-300 transition-colors">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="p-2.5 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-100">
-                    <Phone className="w-5 h-5" />
+                  <div className="p-2.5 rounded-lg bg-blue-50 text-blue-700 border border-blue-100">
+                    <Phone className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-xs font-semibold text-slate-500 uppercase tracking-wide">
+                    <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">
                       Phone Number
                     </span>
                     <a
                       href={`tel:${personalInfo.rawPhone}`}
-                      className="block text-sm sm:text-base font-bold text-slate-900 hover:text-emerald-600 transition-colors"
+                      className="block text-sm sm:text-base font-bold text-slate-900 hover:text-blue-600 transition-colors"
                     >
                       {personalInfo.phone}
                     </a>
@@ -174,7 +175,7 @@ export const Contact: React.FC = () => {
                   type="button"
                   onClick={() => handleCopy(personalInfo.phone, "phone")}
                   title="Copy phone number to clipboard"
-                  className="p-2 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer shrink-0 ml-2"
+                  className="p-2 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-50 transition-colors cursor-pointer shrink-0 ml-2"
                   aria-label="Copy phone number"
                 >
                   {copiedPhone ? (
@@ -189,11 +190,11 @@ export const Contact: React.FC = () => {
             {/* Location Card */}
             <div className="bg-white rounded-xl p-5 border border-slate-200 shadow-2xs">
               <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-lg bg-amber-50 text-amber-700 border border-amber-100">
-                  <MapPin className="w-5 h-5" />
+                <div className="p-2.5 rounded-lg bg-blue-50 text-blue-700 border border-blue-100">
+                  <MapPin className="w-4 h-4" />
                 </div>
                 <div>
-                  <span className="text-xs font-semibold text-slate-500 uppercase tracking-wide">
+                  <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">
                     Location
                   </span>
                   <p className="text-sm sm:text-base font-bold text-slate-900">
@@ -203,17 +204,17 @@ export const Contact: React.FC = () => {
               </div>
             </div>
 
-            {/* Professional Profiles */}
+            {/* Exact Profile Links */}
             <div className="bg-white rounded-xl p-5 border border-slate-200 shadow-2xs">
-              <span className="text-xs font-bold text-slate-700 uppercase tracking-wider block mb-3">
-                Online Profiles &amp; Repositories
+              <span className="text-xs font-bold text-slate-800 uppercase tracking-wider block mb-3">
+                Professional Profiles &amp; Repositories
               </span>
               <div className="grid grid-cols-2 gap-3">
                 <a
                   href={personalInfo.linkedinUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 p-3 rounded-lg bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 text-slate-700 hover:text-blue-700 font-semibold text-xs transition-colors"
+                  className="flex items-center justify-center gap-2 p-2.5 rounded-lg bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 text-slate-700 hover:text-blue-700 font-semibold text-xs transition-colors"
                 >
                   <svg className="w-4 h-4 fill-current text-blue-600" viewBox="0 0 24 24">
                     <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.78a1.64 1.64 0 0 0-1.64 1.64 1.64 1.64 0 0 0 1.64 1.64 1.64 1.64 0 0 0 1.64-1.64 1.64 1.64 0 0 0-1.64-1.64Z" />
@@ -226,7 +227,7 @@ export const Contact: React.FC = () => {
                   href={personalInfo.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 p-3 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200 hover:border-slate-300 text-slate-700 hover:text-slate-900 font-semibold text-xs transition-colors"
+                  className="flex items-center justify-center gap-2 p-2.5 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200 hover:border-slate-300 text-slate-700 hover:text-slate-900 font-semibold text-xs transition-colors"
                 >
                   <svg className="w-4 h-4 fill-current text-slate-800" viewBox="0 0 24 24">
                     <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z" />
@@ -235,21 +236,19 @@ export const Contact: React.FC = () => {
                   <ExternalLink className="w-3 h-3 opacity-60" />
                 </a>
               </div>
-              <p className="mt-2 text-[11px] text-slate-400 text-center">
-                Ready for recruiter review &amp; interview scheduling
-              </p>
             </div>
+
           </div>
 
-          {/* Right Column: Direct Email Delivery Form */}
+          {/* Right Column: Direct Web3Forms Inquiry Form */}
           <div className="lg:col-span-7">
-            <div className="bg-white rounded-xl p-6 sm:p-8 border border-slate-200 shadow-2xs">
-              <div className="flex items-center gap-2.5 mb-6">
+            <div className="bg-white rounded-xl p-6 sm:p-7 border border-slate-200 shadow-2xs">
+              <div className="flex items-center gap-2.5 mb-5">
                 <div className="p-2 rounded-lg bg-blue-600 text-white">
                   <MessageSquare className="w-4 h-4" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-slate-900">
+                  <h3 className="text-base sm:text-lg font-bold text-slate-900">
                     Send a Direct Message
                   </h3>
                   <p className="text-xs text-slate-500">
@@ -260,13 +259,13 @@ export const Contact: React.FC = () => {
 
               {submitStatus === "success" ? (
                 <div className="p-6 rounded-xl bg-emerald-50 border border-emerald-200 text-center space-y-3">
-                  <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto">
-                    <Check className="w-6 h-6" />
+                  <div className="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto">
+                    <Check className="w-5 h-5" />
                   </div>
                   <h4 className="text-base font-bold text-emerald-900">
                     Message Sent Successfully!
                   </h4>
-                  <p className="text-xs sm:text-sm text-emerald-800 max-w-md mx-auto">
+                  <p className="text-xs sm:text-sm text-emerald-800 max-w-md mx-auto leading-relaxed">
                     Thank you for reaching out. Your message has been delivered directly to{" "}
                     <strong>{personalInfo.email}</strong>. Bhavya will respond shortly.
                   </p>
@@ -289,7 +288,7 @@ export const Contact: React.FC = () => {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  {/* Honeypot anti-spam field */}
+                  {/* Anti-spam botcheck */}
                   <input
                     type="text"
                     name="_honey"
@@ -303,7 +302,7 @@ export const Contact: React.FC = () => {
                   />
 
                   {submitStatus === "error" && (
-                    <div className="p-4 rounded-lg bg-red-50 border border-red-200 flex items-start gap-3 text-xs text-red-800">
+                    <div className="p-3.5 rounded-lg bg-red-50 border border-red-200 flex items-start gap-2.5 text-xs text-red-800">
                       <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
                       <div className="space-y-2 grow">
                         <p>{errorMessage}</p>
@@ -319,11 +318,11 @@ export const Contact: React.FC = () => {
                     </div>
                   )}
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                     <div>
                       <label
                         htmlFor="name"
-                        className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5"
+                        className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5"
                       >
                         Your Name / Company <span className="text-red-500">*</span>
                       </label>
@@ -336,14 +335,14 @@ export const Contact: React.FC = () => {
                           setFormData({ ...formData, name: e.target.value })
                         }
                         placeholder="e.g., Alex / Tech Recruiter"
-                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white"
+                        className="w-full px-3.5 py-2 rounded-lg border border-slate-300 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all bg-white"
                       />
                     </div>
 
                     <div>
                       <label
                         htmlFor="email"
-                        className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5"
+                        className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5"
                       >
                         Your Email <span className="text-red-500">*</span>
                       </label>
@@ -356,7 +355,7 @@ export const Contact: React.FC = () => {
                           setFormData({ ...formData, email: e.target.value })
                         }
                         placeholder="you@company.com"
-                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white"
+                        className="w-full px-3.5 py-2 rounded-lg border border-slate-300 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all bg-white"
                       />
                     </div>
                   </div>
@@ -364,7 +363,7 @@ export const Contact: React.FC = () => {
                   <div>
                     <label
                       htmlFor="subject"
-                      className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5"
+                      className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5"
                     >
                       Subject
                     </label>
@@ -376,14 +375,14 @@ export const Contact: React.FC = () => {
                         setFormData({ ...formData, subject: e.target.value })
                       }
                       placeholder="e.g., Java Developer Opportunity"
-                      className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white"
+                      className="w-full px-3.5 py-2 rounded-lg border border-slate-300 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all bg-white"
                     />
                   </div>
 
                   <div>
                     <label
                       htmlFor="message"
-                      className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5"
+                      className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5"
                     >
                       Message <span className="text-red-500">*</span>
                     </label>
@@ -396,14 +395,14 @@ export const Contact: React.FC = () => {
                         setFormData({ ...formData, message: e.target.value })
                       }
                       placeholder="Write your note, job description details, or interview invitation here..."
-                      className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all resize-y bg-white"
+                      className="w-full px-3.5 py-2 rounded-lg border border-slate-300 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all resize-y bg-white"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-blue-600 text-white font-semibold text-sm hover:bg-blue-700 active:bg-blue-800 disabled:bg-blue-400 shadow-sm hover:shadow-md transition-all duration-150 cursor-pointer"
+                    className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-blue-600 text-white font-semibold text-sm hover:bg-blue-700 active:bg-blue-800 disabled:bg-blue-400 shadow-2xs transition-colors cursor-pointer"
                   >
                     {isSubmitting ? (
                       <>
@@ -421,6 +420,7 @@ export const Contact: React.FC = () => {
               )}
             </div>
           </div>
+
         </div>
       </div>
     </section>
