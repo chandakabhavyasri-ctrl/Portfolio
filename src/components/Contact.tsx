@@ -27,7 +27,7 @@ export const Contact: React.FC = () => {
     email: "",
     subject: "",
     message: "",
-    _honey: "", // honeypot field for bot protection
+    _honey: "",
   });
 
   const handleCopy = (text: string, type: "email" | "phone") => {
@@ -44,7 +44,6 @@ export const Contact: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Check honeypot
     if (formData._honey) {
       return;
     }
@@ -54,40 +53,33 @@ export const Contact: React.FC = () => {
     setErrorMessage("");
 
     try {
-      const response = await fetch(
-        `https://formsubmit.co/ajax/${personalInfo.email}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify({
-            Name: formData.name,
-            Email: formData.email,
-            Subject: formData.subject || "New Opportunity / Message from Portfolio",
-            Message: formData.message,
-            _subject: `New Portfolio Message from ${formData.name}`,
-            _template: "table",
-          }),
-        }
-      );
+      // Send to server-side Next.js route
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          _honey: formData._honey,
+        }),
+      });
 
-      const result = await response.json();
+      const data = await response.json();
 
-      if (response.ok && (result.success === "true" || result.success === true || result.message)) {
+      if (response.ok && data.success) {
         setSubmitStatus("success");
       } else {
-        // FormSubmit first time might return success or require email activation
-        setSubmitStatus("success");
+        setSubmitStatus("error");
+        setErrorMessage(data.error || "Failed to send message. Please try again or email directly.");
       }
     } catch (err) {
-      // In case of any network block, provide clean fallback
-      console.error("Form submission error:", err);
+      console.error("Submission failed:", err);
       setSubmitStatus("error");
-      setErrorMessage(
-        "Network connection issue. You can send directly via your email client using the button below."
-      );
+      setErrorMessage("Network error occurred. You can click below to email directly.");
     } finally {
       setIsSubmitting(false);
     }
@@ -97,7 +89,7 @@ export const Contact: React.FC = () => {
     const mailtoUrl = `mailto:${personalInfo.email}?subject=${encodeURIComponent(
       formData.subject || `Inquiry from ${formData.name || "Portfolio Visitor"}`
     )}&body=${encodeURIComponent(
-      `Hello Bhavya,\n\nFrom: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      `Hello Bhavya,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
     )}`;
     window.location.href = mailtoUrl;
   };
@@ -216,7 +208,7 @@ export const Contact: React.FC = () => {
                   className="flex items-center justify-center gap-2 p-3 rounded-lg bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 text-slate-700 hover:text-blue-700 font-semibold text-xs transition-colors"
                 >
                   <svg className="w-4 h-4 fill-current text-blue-600" viewBox="0 0 24 24">
-                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.78a1.64 1.64 0 0 0-1.64 1.64 1.64 1.64 0 0 0 1.64 1.64 1.64 1.64 0 0 0 1.64-1.64 1.64 1.64 0 0 0-1.64-1.64Z" />
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.78a1.64 1.64 0 0 0-1.64 1.64 1.64 1.64 0 0 0 1.64-1.64 1.64 1.64 0 0 0 1.64-1.64 1.64 1.64 0 0 0-1.64-1.64Z" />
                   </svg>
                   <span>LinkedIn</span>
                   <ExternalLink className="w-3 h-3 opacity-60" />
@@ -305,15 +297,15 @@ export const Contact: React.FC = () => {
                   {submitStatus === "error" && (
                     <div className="p-4 rounded-lg bg-red-50 border border-red-200 flex items-start gap-3 text-xs text-red-800">
                       <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
-                      <div className="space-y-2">
+                      <div className="space-y-2 grow">
                         <p>{errorMessage}</p>
                         <button
                           type="button"
                           onClick={openMailClientFallback}
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-red-600 text-white font-semibold hover:bg-red-700 transition-colors"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-red-600 text-white font-semibold hover:bg-red-700 transition-colors cursor-pointer"
                         >
                           <Mail className="w-3.5 h-3.5" />
-                          <span>Open Email Client</span>
+                          <span>Click to Email Directly via Mail App</span>
                         </button>
                       </div>
                     </div>
