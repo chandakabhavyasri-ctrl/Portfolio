@@ -46,7 +46,7 @@ export const personalInfo = {
   location: "Hyderabad, India",
   phone: "+91 9182290967",
   rawPhone: "9182290967",
-  email: "bhavyachandaka@gmail.com",
+  email: "chandakabhavyasri@gmail.com",
   githubUrl: "https://github.com",
   linkedinUrl: "https://linkedin.com",
   profileImage: "/bhavya-chandaka.jpg",
